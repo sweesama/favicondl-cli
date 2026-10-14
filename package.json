@@ -1,0 +1,15 @@
+{
+  "name": "favicondl",
+  "version": "1.0.0",
+  "description": "Download any website's favicon from the command line. Powered by FaviconDL (https://favicondl.com).",
+  "bin": { "favicondl": "bin/favicondl.js" },
+  "files": ["bin", "README.md", "LICENSE"],
+  "scripts": { "test": "node test.js" },
+  "keywords": ["favicon", "favicon-downloader", "icon", "cli", "website-icon", "logo", "favicondl"],
+  "homepage": "https://favicondl.com",
+  "repository": { "type": "git", "url": "git+https://github.com/sweesama/favicondl-cli.git" },
+  "bugs": { "url": "https://github.com/sweesama/favicondl-cli/issues" },
+  "author": "sweesama",
+  "license": "MIT",
+  "engines": { "node": ">=18" }
+}

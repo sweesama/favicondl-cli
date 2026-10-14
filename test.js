@@ -1,0 +1,12 @@
+const { execFileSync } = require('child_process');
+const fs = require('fs'); const os = require('os'); const path = require('path');
+const bin = path.join(__dirname, 'bin/favicondl.js');
+const run = (a) => execFileSync('node', [bin, ...a], { encoding: 'utf8' });
+const assert = (c, m) => { if (!c) { console.error('FAIL', m); process.exit(1); } console.log('ok', m); };
+assert(run(['--help']).includes('Usage'), 'help');
+let bad = false; try { run(['github.com', '--size', '9']); } catch { bad = true; } assert(bad, 'rejects bad size');
+const out = path.join(os.tmpdir(), 'fdl-test', 'gh.png');
+run(['github.com', '--size', '64', '-o', out]);
+assert(fs.statSync(out).size > 100, 'downloads github.com favicon');
+const j = JSON.parse(run(['github.com', '--json']));
+assert(j.ok && j.iconUrl, 'json metadata');
